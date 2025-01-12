@@ -18,9 +18,10 @@ def get_locals(filename):
 metadata = get_locals(os.path.join('bioread', '_metadata.py'))
 
 setup(
-    name="bioread",
+    name="meng-bioread",
     setup_requires=SETUP_REQUIRES,
     version=metadata['version'],
     packages=find_packages(),
     keywords="science research physiological biopac convert library",
+    description='A modified version of bioread'
 )

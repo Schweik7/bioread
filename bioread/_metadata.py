@@ -14,8 +14,10 @@ version_tuple = (3, 0, 1)
 version = ".".join([str(p) for p in version_tuple])
 version_description = "bioread {0}".format(version)
 
-author = "Nate Vack"
-author_email = "njvack@wisc.edu"
+author = "Original author: Nate Vack, current maintainer: Meng"
+author_email = "Original author: njvack@wisc.edu, current maintainer: Meng"
 license = "MIT"
-copyright = "Copyright (c) 2023 Boards of Regent of the University of Wisconsin System"  # noqa
-url = "https://github.com/uwmadison-chm/bioread"
+copyright = (
+    "Copyright (c) 2023 Boards of Regent of the University of Wisconsin System"  # noqa
+)
+url = "https://github.com/Schweik7/bioread"

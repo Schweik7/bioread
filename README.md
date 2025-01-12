@@ -1,3 +1,7 @@
+# Note
+
+- Forked from https://github.com/uwmadison-chm/bioread
+
 # Libraries for reading BIOPAC files
 
 [![DOI](https://zenodo.org/badge/970625.svg)](https://zenodo.org/badge/latestdoi/970625)

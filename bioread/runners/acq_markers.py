@@ -75,16 +75,28 @@ def acq_markers_output_file(input_filenames, output_filename):
         return acq_markers(input_filenames, f)
 
 
-def acq_markers(input_filenames, output_stream):
-    csv_out = csv.DictWriter(output_stream, FIELDS, delimiter=str("\t"))
-    csv_out.writeheader()
+def acq_markers(input_filenames, output_stream=None):
+        """out示范输出
+    [{'filename': '1103-6-活动没启动.acq', 'time (s)': 148.288, 'label': 'Segment 1',
+    'channel': 'Global', 'date_created': '2023-11-03T07:11:38   .905000+00:00',
+    'type_code': 'apnd', 'type': 'Append'}, ...]
+    其中时间为ISO 8601格式，可以datetime.fromisoformat(time_str1)转换为datetime格式"""
+    if output_stream is None:
+        out=[]
+    else:
+        out = csv.DictWriter(output_stream, FIELDS, delimiter=str("\t"))
+        out.writeheader()
     for fname in input_filenames:
         with open(fname, 'rb') as infile:
             r = reader.Reader.read_headers(infile)
             mf = marker_formatter(fname, r.graph_header.sample_time)
             for m in r.datafile.event_markers:
-                csv_out.writerow(mf(m))
-
+                if output_stream is None:
+                    out.append(mf(m))
+                else:
+                    out.writerow(mf(m))
+    if output_stream is None:
+        return out
 
 def main(args=None):
     if args is None:

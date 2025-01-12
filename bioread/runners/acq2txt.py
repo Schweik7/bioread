@@ -68,7 +68,7 @@ class AcqToTxtRunner(object):
         data = bioread.read(infile, channel_indexes=channel_indexes)
         mval = pargs['--missing-as']
         if pargs['--outfile']:
-            with open(pargs['--outfile'], 'w') as f:
+            with open(pargs['--outfile'], 'w', newline='') as f:
                 txtwriter.write_text(data, f, channel_indexes, mval)
         else:
             txtwriter.write_text(data, sys.stdout, channel_indexes, mval)
